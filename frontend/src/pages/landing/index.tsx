@@ -1,7 +1,6 @@
 import Button from "components/button";
 import CommonLayout from "components/common-layout";
 import styles from "./index.module.scss";
-// import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
 import {
   Modal,
@@ -56,14 +55,11 @@ const LandingPage = () => {
         <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
         <div className={styles.description}>This is ...</div>
         <div className={styles.cards}>
+          <div onClick={() => mintNFTWallet(signer, toast)}>
             <Card className={styles.card}>
-              <button
-                className={styles.button5}
-                onClick={() => mintNFTWallet(signer, toast)}
-              >
-                +
-              </button>
+              <button className={styles.button5}>+</button>
             </Card>
+          </div>
           {NFT_Wallets.map(({ id, description }) => (
             <>
               <div onClick={() => selectNFTWallet(id)}>
