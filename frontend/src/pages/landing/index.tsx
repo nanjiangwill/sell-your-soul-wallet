@@ -3,27 +3,38 @@ import CommonLayout from "components/common-layout";
 import styles from "./index.module.scss";
 import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useToast,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 const NFT_Wallets = [
   {
     id: 1,
-    description: "metadata",
+    description: "metadata1",
   },
   {
     id: 2,
-    description: "metadata",
+    description: "metadata2",
   },
   {
     id: 3,
-    description: "metadata",
+    description: "metadata3",
   },
   {
     id: 4,
-    description: "metadata",
+    description: "metadata4",
   },
 ];
 
 const LandingPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
@@ -38,14 +49,38 @@ const LandingPage = () => {
           </div>
           {NFT_Wallets.map(({ id, description }) => (
             <>
-              <div onClick={() => alert("Hello from here")}>
+              <div onClick={() => setIsModalOpen(true)}>
                 <Card className={styles.card}>
-                  <label htmlFor="comments" className="font-medium text-black">
-                    {id}
-                  </label>
-                  <p className="text-gray-500">{description}</p>
+                  <div className="list-container">
+                    <div className={styles.heading}>{id}</div>
+                    <p className="text-gray-500">{description}</p>
+                  </div>
                 </Card>
               </div>
+              <Modal
+                size="xl"
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>{id}</ModalHeader>
+                  <ModalBody>
+                    <p>{description}</p>
+                    <br />
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ marginRight: 15 }}
+                    >
+                      Cancel
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </>
           ))}
         </div>
