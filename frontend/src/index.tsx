@@ -1,37 +1,37 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import { ConnectKitProvider, getDefaultClient } from 'connectkit'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { createClient, WagmiConfig} from 'wagmi'
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ConnectKitProvider, getDefaultClient } from "connectkit";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createClient, WagmiConfig, chain } from "wagmi";
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import reportWebVitals from './reportWebVitals';
-import LandingPage from './pages/landing'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import reportWebVitals from "./reportWebVitals";
+import LandingPage from "./pages/landing";
 
-const client = createClient(getDefaultClient({ appName: 'Sell Your Soul Wallet' }))
+const chains = [chain.arbitrum]; // chain.mainnet, chain.polygon];
+const client = createClient(
+  getDefaultClient({ appName: "Sell Your Soul Wallet", chains })
+);
 
-const container = document.getElementById('root')!
-const root = ReactDOM.createRoot(container)
+const container = document.getElementById("root")!;
+const root = ReactDOM.createRoot(container);
 
-const router = createBrowserRouter([
-  { path: '/', element: <LandingPage /> },
-])
-
+const router = createBrowserRouter([{ path: "/", element: <LandingPage /> }]);
 
 root.render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-      <ConnectKitProvider>
-      <ChakraProvider
-        theme={extendTheme({
-          fonts: {
-            heading: `'Ubuntu', sans-serif`,
-            body: `'Ubuntu', sans-serif`,
-          },
-        })}
-      >
-        <RouterProvider router={router} />
+      <ConnectKitProvider theme="retro">
+        <ChakraProvider
+          theme={extendTheme({
+            fonts: {
+              heading: `'Ubuntu', sans-serif`,
+              body: `'Ubuntu', sans-serif`,
+            },
+          })}
+        >
+          <RouterProvider router={router} />
         </ChakraProvider>
       </ConnectKitProvider>
     </WagmiConfig>
