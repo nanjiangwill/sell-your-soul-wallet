@@ -10,9 +10,9 @@ contract OwnershipNFT is ERC721 {
         string memory symbol_) 
         ERC721(name_, symbol_) {}
 
-    function mint() external {
-        address wallet = new Wallet();
-        uint256 tokenId = uint256(wallet);
+    function mint() external returns (uint256) {
+        address wallet = address(new Wallet());
+        uint256 tokenId = uint256(uint160(wallet));
         _mint(msg.sender, tokenId);
         return tokenId;
     }
