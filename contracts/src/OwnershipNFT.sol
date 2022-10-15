@@ -21,13 +21,12 @@ contract OwnershipNFT is ERC721 {
         return tokenId;
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://goerli.arbiscan.io/address/";
-    }
-
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         _requireMinted(tokenId);
-        string memory baseURI = _baseURI();
-        return string(abi.encodePacked(baseURI, Strings.toHexString(tokenId, 20)));
+        return string(abi.encodePacked(
+        '<svg width="450" height="130" xmlns="http://www.w3.org/2000/svg"><g id="Layer_1"> <title>Layer 1</title><text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_1" y="48" x="30" stroke-width="0" stroke="#000" fill="#000000">Sell-your-soul Wallet</text><text stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="18" id="svg_4" y="99" x="32" stroke-width="0" fill="#000000">',
+        Strings.toHexString(tokenId, 20),
+        '</text></g> </svg>'
+        ));
     }
 }
