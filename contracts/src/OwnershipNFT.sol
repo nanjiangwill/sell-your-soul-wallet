@@ -5,6 +5,8 @@ import "./Wallet.sol";
 
 contract OwnershipNFT is ERC721 {
 
+    event Mint(address owner, address wallet, uint256 tokenId);
+
     constructor(
         string memory name_,
         string memory symbol_)
@@ -14,6 +16,7 @@ contract OwnershipNFT is ERC721 {
         address wallet = address(new Wallet(address(this)));
         uint256 tokenId = uint256(uint160(wallet));
         _mint(msg.sender, tokenId);
+        emit Mint(msg.sender, wallet, tokenId);
         return tokenId;
     }
 }
