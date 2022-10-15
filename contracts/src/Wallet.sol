@@ -11,8 +11,8 @@ struct Action {
 contract Wallet {
   address ownershipNFT;
 
-  constructor (address _ownershiNFT) {
-    ownershipNFT = _ownershiNFT;
+  constructor (address _ownershipNFT) {
+    ownershipNFT = _ownershipNFT;
   }
 
 	function exec(Action[] calldata actions)
