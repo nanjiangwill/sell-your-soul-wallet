@@ -3,40 +3,91 @@ import CommonLayout from "components/common-layout";
 import styles from "./index.module.scss";
 // import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
-import { useToast } from "@chakra-ui/react";
-import { useAccount, useSigner } from "wagmi";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useToast,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import mintNFTWallet from "helpers/mintNFTWallet";
+import { useAccount, useSigner } from "wagmi";
+
+const NFT_Wallets = [
+  {
+    id: 1,
+    description: "metadata1",
+  },
+  {
+    id: 2,
+    description: "metadata2",
+  },
+  {
+    id: 3,
+    description: "metadata3",
+  },
+  {
+    id: 4,
+    description: "metadata4",
+  },
+];
 
 const LandingPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const toast = useToast();
   const { data: signer } = useSigner()
   const { address } = useAccount()
-
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
         <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
         <div className={styles.description}>This is ...</div>
         <div className={styles.cards}>
-          <div> 
+          <div onClick={() => alert("Clicked Mint")}>
             <Card className={styles.card}>
               <button className={styles.button5}
               onClick={() => mintNFTWallet(signer, toast)}>+</button>
             </Card>
           </div>
-          <div onClick={() => alert("Hello from here")}>
-            <Card className={styles.card}>Place Hodler</Card>
-          </div>
-          <Card className={styles.card}>
-            <Button className={styles.button} >
-              Place Hodler
-            </Button>
-          </Card>
-          <Card className={styles.card}>
-            <Button className={styles.button}>
-              Place Hodler
-            </Button>
-          </Card>
+          {NFT_Wallets.map(({ id, description }) => (
+            <>
+              <div onClick={() => setIsModalOpen(true)}>
+                <Card className={styles.card}>
+                  <div className="list-container">
+                    <div className={styles.heading}>{id}</div>
+                    <p className="text-gray-500">{description}</p>
+                  </div>
+                </Card>
+              </div>
+              <Modal
+                size="xl"
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>{id}</ModalHeader>
+                  <ModalBody>
+                    <p>{description}</p>
+                    <br />
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ marginRight: 15 }}
+                    >
+                      Cancel
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </>
+          ))}
         </div>
       </div>
 
