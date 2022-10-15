@@ -1,17 +1,17 @@
-import classNames from 'classnames'
-import { ConnectKitButton } from 'connectkit'
-import { buildJazziconDataUrl } from 'helpers/jazzicon'
-import { useNavigate } from 'react-router-dom'
-import { useAccount } from 'wagmi'
-import styles from './index.module.scss'
-import logo from './logo.png'
+import classNames from "classnames";
+import { ConnectKitButton } from "connectkit";
+import { buildJazziconDataUrl } from "helpers/jazzicon";
+import { useNavigate } from "react-router-dom";
+import { useAccount } from "wagmi";
+import styles from "./index.module.scss";
+import logo from "./logo.png";
 
 export interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Navbar = ({ className, ...props }: NavbarProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { address } = useAccount()
+  const { address } = useAccount();
 
   return (
     <div className={classNames(styles.navbar, className)} {...props}>
@@ -19,7 +19,7 @@ const Navbar = ({ className, ...props }: NavbarProps) => {
         src={logo}
         className={styles.logo}
         alt="Sell Your Soul Wallet"
-        onClick={() => navigate('/')}
+        onClick={() => navigate("/")}
       />
       {address ? (
         <img
@@ -32,7 +32,7 @@ const Navbar = ({ className, ...props }: NavbarProps) => {
         <ConnectKitButton />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
