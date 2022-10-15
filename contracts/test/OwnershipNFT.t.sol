@@ -31,9 +31,8 @@ contract mintTest is Test {
         ONFT1 = new OwnershipNFT("test1", "TST1");
 
         vm.prank(walletMinter1);
-        // w1addr = address(uint160(ONFT1.mint()));
         w1addrUint = ONFT1.mint();
-        w1addr = address(uint160(ONFT1.mint()));
+        w1addr = address(uint160(w1addrUint));
         w1 = Wallet(w1addr);
     }
 
@@ -41,19 +40,21 @@ contract mintTest is Test {
         assertEq(ONFT1.ownerOf(w1addrUint), walletMinter1);
     }
 
-    function testUseWallt() public {
-        vm.prank(walletMinter1);
-        // Action[2] memory actList1 = [
-        //     Action({targetAddress: targetContractAddr1, encodedCall: "asdf"}), 
-        //     Action({targetAddress: targetContractAddr1, encodedCall: "asdf"})];
+    function testUseWallet() public {
         Action[] memory actList1 = new Action[](3);
-        // actList1.push(Action({targetAddress: targetContractAddr1, encodedCall: "asdf5"}));
-        // actList1.push(Action({targetAddress: targetContractAddr1, encodedCall: "243fa"}));
-        // actList1.push(Action({targetAddress: targetContractAddr1, encodedCall: "34t34"}));
-
+        actList1[0] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        actList1[1] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        actList1[2] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        vm.prank(walletMinter1);
         w1.exec(actList1);
     }
 
-    // function testFailUseWallet() public {
-    // }
+    function testFailUseWallet() public {
+        Action[] memory actList1 = new Action[](3);
+        actList1[0] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        actList1[1] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        actList1[2] = Action({targetAddress: targetContractAddr1, encodedCall: '0xc8820f6c000000000000000000000000d47c365127c4c63887fa11d3df89c37a7036926000000000000000000000000000000000000000000000000000a8eac56d395616000000000000000000000000d47c365127c4c63887fa11d3df89c37a70369260'});
+        vm.prank(walletMinter2);
+        w1.exec(actList1);
+    }
 }

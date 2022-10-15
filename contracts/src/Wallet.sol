@@ -20,7 +20,7 @@ contract Wallet {
       returns (bytes[] memory results)
   {
       results = new bytes[](actions.length);
-      require(msg.sender == OwnershipNFT(ownershipNFT).ownerOf(uint256(uint160(address(this)))));
+      require(msg.sender == OwnershipNFT(ownershipNFT).ownerOf(uint256(uint160(address(this)))), "You are not the owner.");
 			for (uint256 i = 0; i < actions.length; i++) {
           results[i] = _Call(actions[i]);
       }
