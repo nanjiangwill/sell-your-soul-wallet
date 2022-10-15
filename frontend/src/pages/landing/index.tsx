@@ -12,29 +12,38 @@ import {
   ModalOverlay,
   useToast,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 const NFT_Wallets = [
   {
-    id: 1,
-    description: "metadata1",
+    id: "1",
+    description: "10",
   },
   {
-    id: 2,
-    description: "metadata2",
+    id: "2",
+    description: "20",
   },
   {
-    id: 3,
-    description: "metadata3",
+    id: "3",
+    description: "30",
   },
   {
-    id: 4,
-    description: "metadata4",
+    id: "4",
+    description: "40",
   },
 ];
 
 const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentWallet, setCurrentWallet] = useState("");
+  const [isTransfer, setIsTransfer] = useState(false);
+  const [transferAccount, setTransferAccount] = useState("");
+
+  function selectNFTWallet(e: string) {
+    setIsModalOpen(true);
+    setCurrentWallet(e);
+  }
+
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
@@ -49,7 +58,7 @@ const LandingPage = () => {
           </div>
           {NFT_Wallets.map(({ id, description }) => (
             <>
-              <div onClick={() => setIsModalOpen(true)}>
+              <div onClick={() => selectNFTWallet(id)}>
                 <Card className={styles.card}>
                   <div className="list-container">
                     <div className={styles.heading}>{id}</div>
@@ -64,10 +73,34 @@ const LandingPage = () => {
               >
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader>{id}</ModalHeader>
+                  <ModalHeader>{currentWallet}</ModalHeader>
                   <ModalBody>
-                    <p>{description}</p>
+                    <p>Balance: {description}</p>
                     <br />
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Sale
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsTransfer(true)}
+                      style={{ margin: 15 }}
+                    >
+                      Transfer
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Swap
+                    </Button>
                   </ModalBody>
                   <ModalFooter>
                     <Button
@@ -76,7 +109,38 @@ const LandingPage = () => {
                       onClick={() => setIsModalOpen(false)}
                       style={{ marginRight: 15 }}
                     >
-                      Cancel
+                      Back
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+              <Modal isOpen={isTransfer} onClose={() => setIsTransfer(false)}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Transfer NFT Wallet</ModalHeader>
+                  <ModalBody>
+                    <form>
+                      <label>
+                        To:
+                        <input type="text" name="name" />
+                      </label>
+                    </form>
+                    <br></br>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button
+                      size="medium"
+                      style={{ marginRight: 15 }}
+                      onClick={() => setIsTransfer(false)}
+                    >
+                      Confirm
+                    </Button>
+                    <Button
+                      size="medium"
+                      style={{ marginRight: 15 }}
+                      onClick={() => setIsTransfer(false)}
+                    >
+                      Back
                     </Button>
                   </ModalFooter>
                 </ModalContent>
