@@ -11,6 +11,10 @@ struct Action {
 contract Wallet {
   address ownershipNFT;
 
+  constructor (address _ownershipNFT) {
+    ownershipNFT = _ownershipNFT;
+  }
+
 	function exec(Action[] calldata actions)
       public
       returns (bytes[] memory results)
