@@ -11,8 +11,8 @@ struct Action {
 contract Wallet {
   address ownershipNFT;
 
-  constructor (address _ownershiNFT) {
-    ownershipNFT = _ownershiNFT;
+  constructor (address _ownershipNFT) {
+    ownershipNFT = _ownershipNFT;
   }
 
 	function exec(Action[] calldata actions)
@@ -20,11 +20,10 @@ contract Wallet {
       returns (bytes[] memory results)
   {
       results = new bytes[](actions.length);
-      if (msg.sender == OwnershipNFT(ownershipNFT).ownerOf(uint256(uint160(address(this))))) {
+      require(msg.sender == OwnershipNFT(ownershipNFT).ownerOf(uint256(uint160(address(this)))), "You are not the owner.");
 			for (uint256 i = 0; i < actions.length; i++) {
           results[i] = _Call(actions[i]);
       }
-		}
 	}
 
 	function _Call(Action calldata action)
