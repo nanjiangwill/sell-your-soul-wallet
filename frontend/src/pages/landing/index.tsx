@@ -4,6 +4,25 @@ import styles from "./index.module.scss";
 import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
 
+const NFT_Wallets = [
+  {
+    id: 1,
+    description: "metadata",
+  },
+  {
+    id: 2,
+    description: "metadata",
+  },
+  {
+    id: 3,
+    description: "metadata",
+  },
+  {
+    id: 4,
+    description: "metadata",
+  },
+];
+
 const LandingPage = () => {
   return (
     <CommonLayout className={styles.page}>
@@ -12,20 +31,23 @@ const LandingPage = () => {
         <div className={styles.description}>This is ...</div>
         {/* <Profile /> */}
         <div className={styles.cards}>
-          <div onClick={() => alert("Hello from here")}>
+          <div onClick={() => alert("Clicked Mint")}>
             <Card className={styles.card}>
               <button className={styles.button5}>+</button>
             </Card>
           </div>
-          <div onClick={() => alert("Hello from here")}>
-            <Card className={styles.card}>Place Hodler</Card>
-          </div>
-          <div onClick={() => alert("Hello from here")}>
-            <Card className={styles.card}>Place Hodler</Card>
-          </div>
-          <div onClick={() => alert("Hello from here")}>
-            <Card className={styles.card}>Place Hodler</Card>
-          </div>
+          {NFT_Wallets.map(({ id, description }) => (
+            <>
+              <div onClick={() => alert("Hello from here")}>
+                <Card className={styles.card}>
+                  <label htmlFor="comments" className="font-medium text-black">
+                    {id}
+                  </label>
+                  <p className="text-gray-500">{description}</p>
+                </Card>
+              </div>
+            </>
+          ))}
         </div>
       </div>
 
