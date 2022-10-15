@@ -57,4 +57,8 @@ contract mintTest is Test {
         vm.prank(walletMinter2);
         w1.exec(actList1);
     }
+
+    function testTokenURI() public {
+        ONFT1.tokenURI(w1addrUint);
+    }
 }
