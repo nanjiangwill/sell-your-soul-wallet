@@ -1,7 +1,7 @@
 {
     "_format": "hh-sol-artifact-1",
-    "contractName": "",
-    "sourceName": "contracts/#####.sol",
+    "contractName": "Wallet",
+    "sourceName": "contracts/Wallet.sol",
     "contract": "",
     "abi": [],
     "bytecode": "",

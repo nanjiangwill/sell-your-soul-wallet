@@ -1,7 +1,7 @@
 import Button from "components/button";
 import CommonLayout from "components/common-layout";
 import styles from "./index.module.scss";
-import { mintNFTWallet } from "helpers/mintNFTWallet";
+// import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
 import {
   Modal,
@@ -13,6 +13,8 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { SetStateAction, useEffect, useState } from "react";
+import mintNFTWallet from "helpers/mintNFTWallet";
+import { useAccount, useSigner } from "wagmi";
 
 const NFT_Wallets = [
   {
@@ -39,6 +41,10 @@ const LandingPage = () => {
   const [isTransfer, setIsTransfer] = useState(false);
   const [transferAccount, setTransferAccount] = useState("");
 
+  const toast = useToast();
+  const { data: signer } = useSigner();
+  const { address } = useAccount();
+
   function selectNFTWallet(e: string) {
     setIsModalOpen(true);
     setCurrentWallet(e);
@@ -49,11 +55,15 @@ const LandingPage = () => {
       <div className={styles.firstView}>
         <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
         <div className={styles.description}>This is ...</div>
-        {/* <Profile /> */}
         <div className={styles.cards}>
           <div onClick={() => alert("Clicked Mint")}>
             <Card className={styles.card}>
-              <button className={styles.button5}>+</button>
+              <button
+                className={styles.button5}
+                onClick={() => mintNFTWallet(signer, toast)}
+              >
+                +
+              </button>
             </Card>
           </div>
           {NFT_Wallets.map(({ id, description }) => (

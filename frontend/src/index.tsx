@@ -9,7 +9,7 @@ import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 import LandingPage from "./pages/landing";
 
-const chains = [chain.arbitrum]; // chain.mainnet, chain.polygon];
+const chains = [chain.arbitrumGoerli]; // chain.mainnet, chain.polygon];
 const client = createClient(
   getDefaultClient({ appName: "Sell Your Soul Wallet", chains })
 );
