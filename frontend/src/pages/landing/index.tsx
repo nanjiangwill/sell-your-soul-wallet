@@ -1,7 +1,6 @@
 import Button from "components/button";
 import CommonLayout from "components/common-layout";
 import styles from "./index.module.scss";
-// import { mintNFTWallet } from "helpers/mintNFTWallet";
 import Card from "components/card";
 import {
   Modal,
