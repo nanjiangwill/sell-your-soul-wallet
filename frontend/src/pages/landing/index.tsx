@@ -20,16 +20,12 @@ const LandingPage = () => {
           <div onClick={() => alert("Hello from here")}>
             <Card className={styles.card}>Place Hodler</Card>
           </div>
-          <Card className={styles.card}>
-            <Button className={styles.button} onClick={() => mintNFTWallet()}>
-              Place Hodler
-            </Button>
-          </Card>
-          <Card className={styles.card}>
-            <Button className={styles.button} onClick={() => mintNFTWallet()}>
-              Place Hodler
-            </Button>
-          </Card>
+          <div onClick={() => alert("Hello from here")}>
+            <Card className={styles.card}>Place Hodler</Card>
+          </div>
+          <div onClick={() => alert("Hello from here")}>
+            <Card className={styles.card}>Place Hodler</Card>
+          </div>
         </div>
       </div>
 

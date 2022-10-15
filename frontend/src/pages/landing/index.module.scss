@@ -37,16 +37,23 @@
     }
   
     .cards {
-      margin-top: 70px;
-  
+      margin-top: 30px;
       display: flex;
       flex-direction: row;
       align-items: stretch;
-  
+      
       .card {
         flex: 1;
         margin-right: 20px;
-  
+        
+        cursor: pointer;
+        transition: transform 200ms;
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:active {
+          transform: scale(1.02);
+        }
         &:last-child {
           margin-right: 0;
         }
