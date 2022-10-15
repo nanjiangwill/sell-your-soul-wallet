@@ -56,7 +56,6 @@ const LandingPage = () => {
         <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
         <div className={styles.description}>This is ...</div>
         <div className={styles.cards}>
-          <div onClick={() => alert("Clicked Mint")}>
             <Card className={styles.card}>
               <button
                 className={styles.button5}
@@ -65,7 +64,6 @@ const LandingPage = () => {
                 +
               </button>
             </Card>
-          </div>
           {NFT_Wallets.map(({ id, description }) => (
             <>
               <div onClick={() => selectNFTWallet(id)}>
