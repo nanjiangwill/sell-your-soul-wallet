@@ -20,4 +20,14 @@ contract OwnershipNFT is ERC721 {
         emit Mint(msg.sender, wallet, tokenId);
         return tokenId;
     }
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://goerli.arbiscan.io/address/";
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        _requireMinted(tokenId);
+        string memory baseURI = _baseURI();
+        return string(abi.encodePacked(baseURI, Strings.toHexString(tokenId, 20)));
+    }
 }
