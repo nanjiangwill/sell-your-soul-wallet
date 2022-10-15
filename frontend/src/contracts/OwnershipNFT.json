@@ -1,7 +1,7 @@
 {
     "_format": "hh-sol-artifact-1",
-    "contractName": "",
-    "sourceName": "contracts/#####.sol",
+    "contractName": "OwnershipNFT",
+    "sourceName": "contracts/OwnershipNFT.sol",
     "contract": "",
     "abi": [],
     "bytecode": "",
