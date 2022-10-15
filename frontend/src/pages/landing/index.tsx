@@ -60,98 +60,98 @@ const LandingPage = () => {
             <Card className={styles.card}>
               <button className={styles.button5}>+</button>
             </Card>
+            {NFT_Wallets.map(({ id, description }) => (
+              <>
+                <div onClick={() => selectNFTWallet(id)}>
+                  <Card className={styles.card}>
+                    <div className="list-container">
+                      <div className={styles.heading}>{id}</div>
+                      <p className="text-gray-500">{description}</p>
+                    </div>
+                  </Card>
+                </div>
+                <Modal
+                  size="xl"
+                  isOpen={isModalOpen}
+                  onClose={() => setIsModalOpen(false)}
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>{currentWallet}</ModalHeader>
+                    <ModalBody>
+                      <p>Balance: {description}</p>
+                      <br />
+                      <Button
+                        size="medium"
+                        variant="secondary"
+                        onClick={() => setIsModalOpen(false)}
+                        style={{ margin: 15 }}
+                      >
+                        Sale
+                      </Button>
+                      <Button
+                        size="medium"
+                        variant="secondary"
+                        onClick={() => setIsTransfer(true)}
+                        style={{ margin: 15 }}
+                      >
+                        Transfer
+                      </Button>
+                      <Button
+                        size="medium"
+                        variant="secondary"
+                        onClick={() => setIsModalOpen(false)}
+                        style={{ margin: 15 }}
+                      >
+                        Swap
+                      </Button>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button
+                        size="medium"
+                        variant="secondary"
+                        onClick={() => setIsModalOpen(false)}
+                        style={{ marginRight: 15 }}
+                      >
+                        Back
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+                <Modal isOpen={isTransfer} onClose={() => setIsTransfer(false)}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Transfer NFT Wallet</ModalHeader>
+                    <ModalBody>
+                      <form>
+                        <label>
+                          To:
+                          <input type="text" name="name" />
+                        </label>
+                      </form>
+                      <br></br>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button
+                        size="medium"
+                        style={{ marginRight: 15 }}
+                        onClick={() => setIsTransfer(false)}
+                      >
+                        Confirm
+                      </Button>
+                      <Button
+                        size="medium"
+                        style={{ marginRight: 15 }}
+                        onClick={() => setIsTransfer(false)}
+                      >
+                        Back
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </>
+            ))}
           </div>
-          {NFT_Wallets.map(({ id, description }) => (
-            <>
-              <div onClick={() => selectNFTWallet(id)}>
-                <Card className={styles.card}>
-                  <div className="list-container">
-                    <div className={styles.heading}>{id}</div>
-                    <p className="text-gray-500">{description}</p>
-                  </div>
-                </Card>
-              </div>
-              <Modal
-                size="xl"
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-              >
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>{currentWallet}</ModalHeader>
-                  <ModalBody>
-                    <p>Balance: {description}</p>
-                    <br />
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
-                      style={{ margin: 15 }}
-                    >
-                      Sale
-                    </Button>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsTransfer(true)}
-                      style={{ margin: 15 }}
-                    >
-                      Transfer
-                    </Button>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
-                      style={{ margin: 15 }}
-                    >
-                      Swap
-                    </Button>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
-                      style={{ marginRight: 15 }}
-                    >
-                      Back
-                    </Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-              <Modal isOpen={isTransfer} onClose={() => setIsTransfer(false)}>
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>Transfer NFT Wallet</ModalHeader>
-                  <ModalBody>
-                    <form>
-                      <label>
-                        To:
-                        <input type="text" name="name" />
-                      </label>
-                    </form>
-                    <br></br>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      size="medium"
-                      style={{ marginRight: 15 }}
-                      onClick={() => setIsTransfer(false)}
-                    >
-                      Confirm
-                    </Button>
-                    <Button
-                      size="medium"
-                      style={{ marginRight: 15 }}
-                      onClick={() => setIsTransfer(false)}
-                    >
-                      Back
-                    </Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
-            </>
-          ))}
         </div>
       </div>
 
