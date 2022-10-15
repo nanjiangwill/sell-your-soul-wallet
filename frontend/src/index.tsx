@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-      <ConnectKitProvider>
+      <ConnectKitProvider theme="retro">
       <ChakraProvider
         theme={extendTheme({
           fonts: {

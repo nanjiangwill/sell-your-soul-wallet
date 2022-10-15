@@ -1,7 +1,6 @@
 import Button from 'components/button'
 import CommonLayout from 'components/common-layout'
 import styles from './index.module.scss'
-import { Profile } from 'components/wallet'
 import { mintNFTWallet } from 'helpers/mintNFTWallet'
 
 const LandingPage = () => {
@@ -13,7 +12,6 @@ const LandingPage = () => {
         <div className={styles.description}>
             This is ...
         </div>
-        {/* <Profile /> */}
         <Button
           className={styles.button}
           onClick={() => mintNFTWallet()}
