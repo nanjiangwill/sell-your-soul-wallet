@@ -1,15 +1,5 @@
 .card {
-  flex-basis:33%;
-  height: 300px;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 30px #00000010;
-  flex-basis:33%;
-}
-.cards {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  margin: 100px auto;
-  flex-wrap:nowrap;
 }

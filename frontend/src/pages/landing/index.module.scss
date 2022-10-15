@@ -37,14 +37,19 @@
     }
   
     .cards {
-      margin-top: 30px;
+      margin: 30px;
       display: flex;
       flex-direction: row;
       align-items: stretch;
-      
+      flex-wrap: wrap;
+
       .card {
-        flex: 1;
-        margin-right: 20px;
+        margin: 20px;
+        width: 300px;
+        height: 300px;
+        align-items:center;
+        justify-content:center;
+        display: flex;
         
         cursor: pointer;
         transition: transform 200ms;
