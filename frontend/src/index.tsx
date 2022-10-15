@@ -1,15 +1,47 @@
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ConnectKitProvider, getDefaultClient } from 'connectkit'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createClient, WagmiConfig} from 'wagmi'
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import LandingPage from './pages/landing'
+import UserProfilePage from './pages/user-profile'
+import MintPage from 'pages/mint';
+import TransferPage from 'pages/transfer';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const client = createClient(getDefaultClient({ appName: 'Sell Your Soul Wallet' }))
+
+const container = document.getElementById('root')!
+const root = ReactDOM.createRoot(container)
+
+const router = createBrowserRouter([
+  { path: '/', element: <LandingPage /> },
+  { path: "/mint", element: <MintPage /> },
+  { path: "/transfer", element: <TransferPage /> },
+  { path: '/users/:address', element: <UserProfilePage /> },
+
+])
+
+
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig client={client}>
+      <ConnectKitProvider>
+      <ChakraProvider
+        theme={extendTheme({
+          fonts: {
+            heading: `'Ubuntu', sans-serif`,
+            body: `'Ubuntu', sans-serif`,
+          },
+        })}
+      >
+        <RouterProvider router={router} />
+        </ChakraProvider>
+      </ConnectKitProvider>
+    </WagmiConfig>
   </React.StrictMode>
 );
 

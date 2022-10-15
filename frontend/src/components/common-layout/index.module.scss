@@ -1,0 +1,32 @@
+.layout {
+    .header {
+      position: fixed;
+  
+      top: 0;
+  
+      left: 50%;
+      transform: translateX(-50%);
+  
+      width: 100%;
+      max-width: 1080px;
+  
+      background-color: #ffffff90;
+      backdrop-filter: blur(5px);
+  
+      z-index: 10;
+    }
+  
+    .content {
+      padding: 15px;
+  
+      margin-top: 70px;
+      margin-left: auto;
+      margin-right: auto;
+  
+      max-width: 1080px;
+  
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
