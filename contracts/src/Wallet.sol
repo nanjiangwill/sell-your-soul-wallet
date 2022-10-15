@@ -7,11 +7,16 @@ struct Action {
 }
 
 contract Wallet {
+  address nft_contract;
 
-	function exec(calldata Action[] actions) {
-		if (msg.caller == NFTMaster.ownerOf(uint256 this)) {
+	function exec(Action[] calldata actions)
+      public
+      returns (bytes[] memory results)
+  {
+      results = new bytes[](actions.length);
+      if (msg.sender == nft_contract.ownerOf(uint256(this))) {
 			for (uint256 i = 0; i < actions.length; i++) {
-        results[i] = _Call(actions[i]);
+          results[i] = _Call(actions[i]);
       }
 		}
 	}
