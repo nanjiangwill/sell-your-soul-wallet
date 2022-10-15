@@ -13,7 +13,7 @@ const LandingPage = () => {
         <div className={styles.description}>
             This is ...
         </div>
-        <Profile />
+        {/* <Profile /> */}
         <Button
           className={styles.button}
           onClick={() => mintNFTWallet()}

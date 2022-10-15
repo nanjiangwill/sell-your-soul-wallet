@@ -1,0 +1,28 @@
+.navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 70px;
+
+  .logo {
+    cursor: pointer;
+
+    height: 36px;
+  }
+
+  .jazzicon {
+    display: block;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 100%;
+
+    cursor: pointer;
+  }
+}
