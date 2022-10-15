@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import "../lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./Wallet.sol";
 
 address constant TokenFOO = 0x16367BB04F0Bb6D4fc89d2aa31c32E0ddA609508;
 address constant TokenBAR = 0x26AA6EF8FCf205E7aC9466DBa73bcC8a8FA9B958;
 
-contract OwnershipNFT is ERC721 {
+contract OwnershipNFT is ERC721Enumerable {
 
     event Mint(address owner, address wallet, uint256 tokenId);
 
