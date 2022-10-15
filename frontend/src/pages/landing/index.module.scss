@@ -18,10 +18,21 @@
         font-size: 24px;
       }
   
-      .button {
-        margin-top: 30px;
-  
-        align-self: flex-center;
+      .button5 {
+        color: grey;
+        font-weight: bold;
+        font-size: 40px;
+        border-radius: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 200ms;
+        &:hover {
+          transform: scale(1.05);
+        &:active {
+          transform: scale(1.02);
+        }
       }
     }
   
@@ -150,4 +161,4 @@
       }
     }
   }
-  
+}
