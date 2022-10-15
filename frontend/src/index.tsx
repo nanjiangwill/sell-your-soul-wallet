@@ -8,9 +8,6 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import LandingPage from './pages/landing'
-import UserProfilePage from './pages/user-profile'
-import MintPage from 'pages/mint';
-import TransferPage from 'pages/transfer';
 
 const client = createClient(getDefaultClient({ appName: 'Sell Your Soul Wallet' }))
 
@@ -19,10 +16,6 @@ const root = ReactDOM.createRoot(container)
 
 const router = createBrowserRouter([
   { path: '/', element: <LandingPage /> },
-  { path: "/mint", element: <MintPage /> },
-  { path: "/transfer", element: <TransferPage /> },
-  { path: '/users/:address', element: <UserProfilePage /> },
-
 ])
 
 

@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom'
 import Button from 'components/button'
 import CommonLayout from 'components/common-layout'
 import styles from './index.module.scss'
+import { Profile } from 'components/wallet'
+import { mintNFTWallet } from 'helpers/mintNFTWallet'
 
 const LandingPage = () => {
-    const navigate = useNavigate()
 
     return (
         <CommonLayout className={styles.page}>
@@ -13,28 +13,25 @@ const LandingPage = () => {
         <div className={styles.description}>
             This is ...
         </div>
+        <Profile />
         <Button
           className={styles.button}
-          onClick={() => navigate('/mint')}
+          onClick={() => mintNFTWallet()}
         >
           Mint now!
         </Button>
-        <Button
-          className={styles.button}
-          onClick={() => navigate('/transfer')}
-        >
-          Transfer Now!
-        </Button>
       </div>
-      <div className={styles.howTo}>
+
+      
+      {/* <div className={styles.howTo}>
         <div className={styles.heading}>How you can use it?</div>
         <div className={styles.steps}>
           <div className={styles.step}>
             <p>Mint your NFT and get your NFT Wallet</p>
-            {/* <p>
+            <p>
               <b>AND</b>
             </p>
-            <p>Get your NFT Wallet</p> */}
+            <p>Get your NFT Wallet</p>
           </div>
           <div className={styles.arrow} />
           <div className={styles.step}>
@@ -43,16 +40,16 @@ const LandingPage = () => {
           <div className={styles.arrow} />
           <div className={styles.step}>
             <p>Transfer the ownership by just one click!</p>
-            {/* <br />
+            <br />
             <p>
               <small>
                 (SBT, or Soulbound Tokens, are non-transferrable NFT designed to
                 show your permenant credentials)
               </small>
-            </p> */}
+            </p>
           </div>
         </div>
-      </div>
+      </div> */}
         </CommonLayout>
       )
     }
