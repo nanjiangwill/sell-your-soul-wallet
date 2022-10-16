@@ -202,14 +202,6 @@ const LandingPage = () => {
                     >
                       Transfer
                     </Button>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => swapToken(OwnershipNFTContract, signer, "0xf23Dd53731e5159B8e724198E0ea52EcD17f08cf", "0xf23Dd53731e5159B8e724198E0ea52EcD17f08cf", "function transfer", "",toast)}
-                      style={{ margin: 15 }}
-                    >
-                      Swap
-                    </Button>
                   </ModalBody>
                   <ModalFooter>
                     <Button
