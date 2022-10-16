@@ -108,12 +108,12 @@ const LandingPage = () => {
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
-        <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
-        <div className={styles.description}>This is ...</div>
+        <div className={styles.heading}>Sell-Your-Soul Wallet</div>
+        <div className={styles.description}>View the NFT wallets you own</div>
         <div className={styles.cards}>
           <div onClick={() => mintNFTWallet(signer, toast)}>
             <Card className={styles.card}>
-              <button className={styles.button5}>+</button>
+              <button className={styles.button5}>Mint New</button>
             </Card>
           </div>
           {NFT_Wallets.map(({ tokenId, tokenUri }) => (
@@ -138,13 +138,43 @@ const LandingPage = () => {
                   <ModalHeader>{currentWallet}</ModalHeader>
                   <ModalBody>
                     <br />
+                    <span style={{ fontWeight: "bold", fontSize: "23px" }}>
+                      Use Wallet
+                    </span>
                     <Button
                       size="medium"
                       variant="secondary"
                       onClick={() => setIsModalOpen(false)}
                       style={{ margin: 15 }}
                     >
-                      Sale
+                      Uniswap - Add Liquidity
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Uniswap - Withdraw Liquidity
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Uniswap - Swap Tokens
+                    </Button>
+                    <span style={{ fontWeight: "bold", fontSize: "23px" }}>
+                      Transfer NFT Wallet Ownership
+                    </span>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Sell
                     </Button>
                     <Button
                       size="medium"
@@ -153,14 +183,6 @@ const LandingPage = () => {
                       style={{ margin: 15 }}
                     >
                       Transfer
-                    </Button>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
-                      style={{ margin: 15 }}
-                    >
-                      Swap
                     </Button>
                   </ModalBody>
                   <ModalFooter>
