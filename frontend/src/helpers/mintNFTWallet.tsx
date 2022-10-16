@@ -21,20 +21,19 @@ const mintNFTWallet = async (signer: any, toast: any) => {
       Swal.showLoading();
 
       const receipt = await OwnershipNFTContractResponce.wait();
-      Swal.hideLoading();
-      if (receipt.status === 1) {
-        const tokenId = receipt.events[0].args.tokenId._hex;
-        Swal.update({
-          title: "Success!",
+      Swal.hideLoading()
+      if (receipt.status == 1) {
+      const tokenId = receipt.events[0].args.tokenId._hex;
+       Swal.update({
+          title: 'Success!',
           html: `Your NFT Wallet is ready! <br> NFT Wallet Address: ${tokenId}`,
-          icon: "success",
+          icon: 'success',
           showConfirmButton: false,
-        });
-      } else {
-        Swal.update({
-          icon: "error",
-          title: "Transaction Failed",
-        });
+        })
+      }
+      else {
+        Swal.close();
+        throw new Error('Mint Failed during transaction');
       }
     }
   } catch (error: any) {
