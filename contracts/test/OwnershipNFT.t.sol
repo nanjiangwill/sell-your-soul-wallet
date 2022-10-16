@@ -10,7 +10,8 @@ contract mintTest is Test {
     address public walletMinter1 = address(1);
     address public walletMinter2 = address(2);
     address public walletMinter3 = address(3);
-
+    address public randomEOA1 = address(100);
+    address public randomEOA2 = address(105);
     address public targetContractAddr1 = address(101);
 
     OwnershipNFT ONFT1;
@@ -20,7 +21,10 @@ contract mintTest is Test {
     Wallet w1;
     address w1addr;
 
+    uint256 w2addrUint;
+    Wallet w2;
     address w2addr;
+
     address w3addr;
 
     // setup actions 
@@ -81,4 +85,23 @@ contract mintTest is Test {
         vm.prank(walletMinter2);
         w1.transferEthOut(walletMinter1, 1);
     }
-}
+
+    function testChainedWallet() public {
+        Action[] memory actList2 = new Action[](1);
+    
+        vm.prank(randomEOA1);
+        w2addrUint = ONFT1.mint();
+        w2addr = address(uint160(w2addrUint));
+        w2 = Wallet(w2addr);
+
+        vm.prank(OwnershipNFT);
+        address t = address(this);
+        vm.prank(randomEOA1);
+        bytes memory tmp = abi.encodeWithSelector(IERC721.transferFrom.selector, randomEOA1, randomEOA2, uint256(uint160(w2addr)));
+
+        actList2[0] = Action({targetAddress: t, encodedCall: tmp});
+        w2.exec(actList2);
+
+
+    }
+ }
