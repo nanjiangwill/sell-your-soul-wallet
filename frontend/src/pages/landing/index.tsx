@@ -16,7 +16,7 @@ import mintNFTWallet from "helpers/mintNFTWallet";
 import { useAccount, useSigner, useProvider } from "wagmi";
 import { Contract } from "@ethersproject/contracts";
 import OwnershipNFT from "contracts/OwnershipNFT.json";
-import { ethers } from "ethers";
+import { useNavigate } from "react-router-dom";
 
 const NFT_Wallet = [
   {
@@ -59,6 +59,8 @@ const LandingPage = () => {
     provider
   );
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     const queryNFT = async () => {
       try {
@@ -74,7 +76,12 @@ const LandingPage = () => {
             _i
           );
           var tokenID = rawTokenID._hex;
+          console.log("tokenID");
           console.log(tokenID);
+          var deT = parseInt(tokenID, 16);
+          console.log(deT);
+          var test = BigInt(deT);
+          console.log(test);
           var tokenURI = await OwnershipNFTContract.tokenURI(tokenID);
           const temp_Wallet: NFT_Wallet = {
             tokenId: tokenID,
@@ -171,10 +178,15 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
+                      onClick={() => {
+                        window.location.href =
+                          "https://testnet.stratosnft.io/asset/0x948F9CDFb30b2646b27e1799F0866225D89269BB" +
+                          "/" +
+                          BigInt(tokenId);
+                      }}
                       style={{ margin: 15 }}
                     >
-                      Sell
+                      Sell on Stratos
                     </Button>
                     <Button
                       size="medium"
