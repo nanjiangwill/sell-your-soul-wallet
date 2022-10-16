@@ -54,8 +54,6 @@ const LandingPage = () => {
   const { data: signer } = useSigner();
   const { address } = useAccount();
 
-  // 
-  const provider = useProvider();
   const OwnershipNFTContract = new Contract(
     OwnershipNFT.contract,
     OwnershipNFT.abi,
