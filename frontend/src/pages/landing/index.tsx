@@ -52,12 +52,12 @@ const LandingPage = () => {
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
-        <div className={styles.heading}>Sell Your Soul Wallet is ....</div>
-        <div className={styles.description}>This is ...</div>
+        <div className={styles.heading}>Sell-Your-Soul Wallet</div>
+        <div className={styles.description}>View the NFT wallets you own</div>
         <div className={styles.cards}>
           <div onClick={() => mintNFTWallet(signer, toast)}>
             <Card className={styles.card}>
-              <button className={styles.button5}>+</button>
+              <button className={styles.button5}>Mint New</button>
             </Card>
           </div>
           {NFT_Wallets.map(({ id, description }) => (
