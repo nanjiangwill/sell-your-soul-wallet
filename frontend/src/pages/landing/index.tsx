@@ -79,15 +79,41 @@ const LandingPage = () => {
                 <ModalContent>
                   <ModalHeader>{currentWallet}</ModalHeader>
                   <ModalBody>
-                    <p>Balance: {description}</p>
+                    <p><span style={{ fontSize: '20px' }}>ETH Balance: {description}</span></p>
                     <br />
+                    <span style={{ fontWeight: 'bold', fontSize: '23px' }}>Use Wallet</span>
                     <Button
                       size="medium"
                       variant="secondary"
                       onClick={() => setIsModalOpen(false)}
                       style={{ margin: 15 }}
                     >
-                      Sale
+                      Uniswap - Add Liquidity
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Uniswap - Withdraw Liquidity
+                    </Button>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Uniswap - Swap Tokens
+                    </Button>
+                    <span style={{ fontWeight: 'bold', fontSize: '23px' }}>Transfer NFT Wallet Ownership</span>
+                    <Button
+                      size="medium"
+                      variant="secondary"
+                      onClick={() => setIsModalOpen(false)}
+                      style={{ margin: 15 }}
+                    >
+                      Sell
                     </Button>
                     <Button
                       size="medium"
@@ -96,14 +122,6 @@ const LandingPage = () => {
                       style={{ margin: 15 }}
                     >
                       Transfer
-                    </Button>
-                    <Button
-                      size="medium"
-                      variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
-                      style={{ margin: 15 }}
-                    >
-                      Swap
                     </Button>
                   </ModalBody>
                   <ModalFooter>
