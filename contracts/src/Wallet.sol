@@ -37,5 +37,14 @@ contract Wallet {
         require(success, "Call failed");
         return result;
     }
+  
+
+  function transferEthOut(address to, uint256 amount) 
+      public
+      returns (bool success)
+  {
+      require(msg.sender == OwnershipNFT(ownershipNFT).ownerOf(uint256(uint160(address(this)))), "You are not the owner.");
+      (success, ) = to.call{value: amount}("");
+  }
 }
 
