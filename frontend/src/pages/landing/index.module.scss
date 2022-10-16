@@ -56,6 +56,27 @@
         }
       }
     }
+    .textarea {
+      margin-bottom: 20px;
+  
+      appearance: none;
+      border: none;
+      resize: none;
+  
+      width: 100%;
+      height: 150px;
+  
+      font-size: 18px;
+  
+      border-radius: 15px;
+      background-color: #f7f8f9;
+  
+      padding: 20px;
+  
+      &:focus {
+        outline: none;
+      }
+    }
   
     .cards {
       margin: 30px;
@@ -95,6 +116,7 @@
       }
     }
   
+    
     .howTo {
       margin-top: 80px;
   

@@ -18,6 +18,7 @@ import { Contract } from "@ethersproject/contracts";
 import OwnershipNFT from "contracts/OwnershipNFT.json";
 import { useNavigate } from "react-router-dom";
 import swapToken from "helpers/swap";
+import transferNFTWallet from "helpers/transferNFTWallet";
 
 const NFT_Wallet = [
   {
@@ -226,7 +227,12 @@ const LandingPage = () => {
                     <form>
                       <label>
                         To:
-                        <input type="text" name="name" />
+                        <textarea
+                        className={styles.textarea}
+                        placeholder="Address of recipient"
+                        value={transferAccount}
+                        onChange={event => setTransferAccount(event.target.value.replace(/\n/g, ''))}
+                      />
                       </label>
                     </form>
                     <br></br>
@@ -235,7 +241,7 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       style={{ marginRight: 15 }}
-                      onClick={() => setIsTransfer(false)}
+                      onClick={() => transferNFTWallet(transferAccount, signer, currentWallet, OwnershipNFTContract, toast)}
                     >
                       Confirm
                     </Button>
