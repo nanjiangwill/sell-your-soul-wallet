@@ -13,7 +13,7 @@ const mintNFTWallet = async (signer: any, toast: any) => {
 
       const OwnershipNFTContractResponce = await OwnershipNFTContract.mint();
       const hash = OwnershipNFTContractResponce.hash;
-      const hashUrl = `<a href=https://goerli.arbiscan.io/tx/${hash}>Check Arbitrum Testnet Info(Click with CMD)</a>`;
+      const hashUrl = `<a href=https://goerli.arbiscan.io/tx/${hash}>Check Arbitrum Testnet Info (Click with CMD)</a>`;
       Swal.fire({
         title: "Waiting for the result from the blockchain",
         footer: hashUrl,
