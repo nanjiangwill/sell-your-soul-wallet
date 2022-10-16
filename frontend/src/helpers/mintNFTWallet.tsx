@@ -1,6 +1,6 @@
 import { Contract } from "@ethersproject/contracts";
 import OwnershipNFT from "contracts/OwnershipNFT.json";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 const mintNFTWallet = async (signer: any, toast: any) => {
   try {
@@ -10,16 +10,16 @@ const mintNFTWallet = async (signer: any, toast: any) => {
         OwnershipNFT.abi,
         signer
       );
-      
+
       const OwnershipNFTContractResponce = await OwnershipNFTContract.mint();
       const hash = OwnershipNFTContractResponce.hash;
-      const hashUrl = `<a href=https://goerli.arbiscan.io/tx/${hash}>Check Arbitrum Testnet Info(Click with CMD)</a>`;
+      const hashUrl = `<a href=https://goerli.arbiscan.io/tx/${hash}>Check Arbitrum Testnet Info (Click with CMD)</a>`;
       Swal.fire({
-        title: 'Waiting for the result from the blockchain',
-        footer: hashUrl
-      })
-      Swal.showLoading()
-      
+        title: "Waiting for the result from the blockchain",
+        footer: hashUrl,
+      });
+      Swal.showLoading();
+
       const receipt = await OwnershipNFTContractResponce.wait();
       Swal.hideLoading()
       if (receipt.status == 1) {
@@ -32,10 +32,8 @@ const mintNFTWallet = async (signer: any, toast: any) => {
         })
       }
       else {
-        Swal.update({
-          icon: 'error',
-          title: 'Transaction Failed',
-        })
+        Swal.close();
+        throw new Error('Mint Failed during transaction');
       }
     }
   } catch (error: any) {
