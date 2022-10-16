@@ -129,7 +129,7 @@ const LandingPage = () => {
               <div onClick={() => selectNFTWallet(tokenId)}>
                 <Card className={styles.card}>
                   <div className="list-container">
-                    <img src={`data:image/svg+xml;utf8,${image}`} />
+                    <img src={`${tokenUri}`} />
                   </div>
                 </Card>
               </div>
@@ -149,7 +149,7 @@ const LandingPage = () => {
                   </ModalHeader>
                   <ModalBody>
                     <div>
-                      <img src={`data:image/svg+xml;utf8,${image}`} />
+                      <img src={`data:image/svg+xml;utf8, ${tokenUri}`} />
                     </div>
                     <span style={{ fontWeight: "bold", fontSize: "23px" }}>
                       Use Wallet
