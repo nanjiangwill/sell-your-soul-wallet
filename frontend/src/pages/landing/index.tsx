@@ -149,7 +149,7 @@ const LandingPage = () => {
                   </ModalHeader>
                   <ModalBody>
                     <div>
-                      <img src={`data:image/svg+xml;utf8, ${tokenUri}`} />
+                      <img src={`${tokenUri}`} />
                     </div>
                     <span style={{ fontWeight: "bold", fontSize: "23px" }}>
                       Use Wallet
