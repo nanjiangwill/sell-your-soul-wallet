@@ -61,4 +61,24 @@ contract mintTest is Test {
     function testTokenURI() public {
         ONFT1.tokenURI(w1addrUint);
     }
+
+    function testTransferOut() public {
+        vm.deal(w1addr, 1000);
+        vm.prank(walletMinter1);
+        w1.transferEthOut(walletMinter1, 1);
+        assertEq(address(walletMinter1).balance, 1);
+    }
+
+    function testTransferOutInsufficientMoney() public {
+        vm.deal(w1addr, 1000);
+        vm.prank(walletMinter1);
+        bool b = w1.transferEthOut(walletMinter1, 1001);
+        assertFalse(b);
+    }
+
+    function testFailTransferOut() public {
+        vm.deal(w1addr, 1000);
+        vm.prank(walletMinter2);
+        w1.transferEthOut(walletMinter1, 1);
+    }
 }
