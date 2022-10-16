@@ -20,6 +20,7 @@ contract mintTest is Test {
     uint256 w1addrUint;
     Wallet w1;
     address w1addr;
+    address payable w1addrpay;
 
     uint256 w2addrUint;
     Wallet w2;
@@ -36,8 +37,8 @@ contract mintTest is Test {
 
         vm.prank(walletMinter1);
         w1addrUint = ONFT1.mint();
-        w1addr = address(uint160(w1addrUint));
-        w1 = Wallet(w1addr);
+        w1addrpay = payable(address(uint160(w1addrUint)));
+        w1 = Wallet(w1addrpay);
     }
 
     function testMintNFT() public {
