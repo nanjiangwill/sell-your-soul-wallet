@@ -5,6 +5,7 @@ import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "./Wallet.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/Strings.sol";
+import "../lib/openzeppelin-contracts/contracts/utils/Base64.sol";
 
 
 address constant TokenFOO = 0x16367BB04F0Bb6D4fc89d2aa31c32E0ddA609508;
@@ -37,16 +38,15 @@ contract OwnershipNFT is ERC721Enumerable {
 
         parts[1] = Strings.toString(addr.balance);
         parts[2] = '</text><text x="15" y="150" class="mainText">FOO Balance: ';
-        parts[3] = Strings.toString(IERC20(address(TokenFOO)).balanceOf(addr)); 
+        parts[3] = Strings.toString(IERC20(address(TokenFOO)).balanceOf(addr));
         parts[4] = '</text><text x="15" y="180" class="mainText">BAR Balance: ';
         parts[5] = Strings.toString(IERC20(address(TokenFOO)).balanceOf(addr));
         parts[6] = '</text><text x="15" y="230" class="mainText">Wallet Address:</text><text x="15" y="245" class="smolText">';
         parts[7] = addressText;
         parts[8] = '</text><defs><clipPath id="clip0_1_18"><rect width="300" height="300" fill="white"/></clipPath></defs></svg>';
 
-        string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]));
+        string memory svg = string(abi.encodePacked('data:image/svg+xml;utf8,', parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]));
 
-        return output;
-
+        return svg;
     }
 }

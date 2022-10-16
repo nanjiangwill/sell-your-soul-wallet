@@ -18,6 +18,7 @@ import { Contract } from "@ethersproject/contracts";
 import OwnershipNFT from "contracts/OwnershipNFT.json";
 import { useNavigate } from "react-router-dom";
 import swapToken from "helpers/swap";
+import transferNFTWallet from "helpers/transferNFTWallet";
 
 const NFT_Wallet = [
   {
@@ -129,7 +130,7 @@ const LandingPage = () => {
               <div onClick={() => selectNFTWallet(tokenId)}>
                 <Card className={styles.card}>
                   <div className="list-container">
-                    <img src={`data:image/svg+xml;utf8,${image}`} />
+                    <img src={`${tokenUri}`} />
                   </div>
                 </Card>
               </div>
@@ -149,7 +150,7 @@ const LandingPage = () => {
                   </ModalHeader>
                   <ModalBody>
                     <div>
-                      <img src={`data:image/svg+xml;utf8,${image}`} />
+                      <img src={`${tokenUri}`} />
                     </div>
                     <span style={{ fontWeight: "bold", fontSize: "23px" }}>
                       Use Wallet
@@ -186,7 +187,7 @@ const LandingPage = () => {
                       variant="secondary"
                       onClick={() => {
                         window.location.href =
-                          "https://testnet.stratosnft.io/asset/0x948F9CDFb30b2646b27e1799F0866225D89269BB" +
+                          "https://testnet.stratosnft.io/asset/0x9804EcBe8269F7B8e1BBE91FFf0f19b11C897A13" +
                           "/" +
                           BigInt(tokenId);
                       }}
@@ -223,7 +224,12 @@ const LandingPage = () => {
                     <form>
                       <label>
                         To:
-                        <input type="text" name="name" />
+                        <textarea
+                        className={styles.textarea}
+                        placeholder="Address of recipient"
+                        value={transferAccount}
+                        onChange={event => setTransferAccount(event.target.value.replace(/\n/g, ''))}
+                      />
                       </label>
                     </form>
                     <br></br>
@@ -232,7 +238,7 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       style={{ marginRight: 15 }}
-                      onClick={() => setIsTransfer(false)}
+                      onClick={() => transferNFTWallet(transferAccount, signer, currentWallet, OwnershipNFTContract, toast)}
                     >
                       Confirm
                     </Button>
