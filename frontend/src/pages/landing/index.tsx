@@ -108,10 +108,10 @@ const LandingPage = () => {
     setIsModalOpen(true);
     setCurrentWallet(e);
   }
-  const image =
-    '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
   // const image =
-  //   "<svg width='300' height='300' viewBox='0 0 300 300' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_1_18)'><rect width='300' height='300' fill='#F5AD56'/><style>.title { fill: black; font-family: sans-serif; font-size: 27px; }</style><style>.title2 { fill: black; font-family: sans-serif; font-size: 14px; }</style><style>.mainText { fill: black; font-family: sans-serif; font-size: 14px; }</style><style>.smolText { fill: black; font-family: sans-serif; font-size: 10px; }</style><text x='31' y='50' class='title'>Sell-your-soul Wallet</text><text x='15' y='75' class='title2'>A tradable and rentable smart contract wallet</text><text x='15' y='120' class='mainText'>ETH Balance: 0</text><text x='15' y='150' class='mainText'>FOO Balance: </text><text x='15' y='180' class='mainText'>BAR Balance: </text><text x='15' y='230' class='mainText'>Wallet Address:</text><text x='15' y='245' class='smolText'>0x1d6aaf2d5040af1149ba404a54fbbcc07d127b99</text></g><defs><clipPath id='clip0_1_18'><rect width='300' height='300' fill='white'/></clipPath></defs></svg>";
+  //   '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
+  const image =
+    '<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color:Orange" opacity="0.57">   <style>.title { fill: black; font-family: sans-serif; font-size: 27px; }</style>    <style>.title2 { fill: black; font-family: sans-serif; font-size: 14px; }</style>    <style>.mainText { fill: black; font-family: sans-serif; font-size: 14px; }</style><style>.smolText { fill: black; font-family: sans-serif; font-size: 10px; }</style><text x="31" y="50" class="title">Sell-Your-Soul Wallet</text><text x="15" y="75" class="title2">A tradable and rentable smart contract wallet</text><text x="15" y="120" class="mainText">ETH Balance: 0</text><text x="15" y="150" class="mainText">FOO Balance: </text><text x="15" y="180" class="mainText">BAR Balance: </text><text x="15" y="230" class="mainText">Wallet Address:</text><text x="15" y="245" class="smolText">0xf4d9599afd90b5038b18e3b551bc21a97ed21c37</text><defs><clipPath id="clip0_1_18"><rect width="300" height="300" fill="white"/></clipPath></defs></svg>';
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
@@ -128,10 +128,7 @@ const LandingPage = () => {
               <div onClick={() => selectNFTWallet(tokenId)}>
                 <Card className={styles.card}>
                   <div className="list-container">
-                    <div className={styles.heading}>{tokenId}</div>
-                    <div>
-                      <img src={`data:image/svg+xml;utf8,${image}`} />
-                    </div>
+                    <img src={`data:image/svg+xml;utf8,${image}`} />
                   </div>
                 </Card>
               </div>
@@ -142,9 +139,17 @@ const LandingPage = () => {
               >
                 <ModalOverlay />
                 <ModalContent>
-                  <ModalHeader>{currentWallet}</ModalHeader>
+                  <ModalHeader
+                    onClick={() =>
+                      (window.location.href = `https://goerli.arbiscan.io/address/${currentWallet}`)
+                    }
+                  >
+                    {currentWallet}
+                  </ModalHeader>
                   <ModalBody>
-                    <br />
+                    <div>
+                      <img src={`data:image/svg+xml;utf8,${image}`} />
+                    </div>
                     <span style={{ fontWeight: "bold", fontSize: "23px" }}>
                       Use Wallet
                     </span>
