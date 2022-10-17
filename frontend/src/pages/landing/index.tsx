@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   useToast,
 } from "@chakra-ui/react";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import mintNFTWallet from "helpers/mintNFTWallet";
 import { useAccount, useSigner, useProvider } from "wagmi";
 import { Contract } from "@ethersproject/contracts";
@@ -20,25 +20,6 @@ import { useNavigate } from "react-router-dom";
 import swapToken from "helpers/swap";
 import transferNFTWallet from "helpers/transferNFTWallet";
 import testCalldata from "helpers/testCalldata";
-
-const NFT_Wallet = [
-  {
-    id: "1",
-    description: "10",
-  },
-  {
-    id: "2",
-    description: "20",
-  },
-  {
-    id: "3",
-    description: "30",
-  },
-  {
-    id: "4",
-    description: "40",
-  },
-];
 
 const LandingPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -104,10 +85,7 @@ const LandingPage = () => {
     setIsModalOpen(true);
     setCurrentWallet(e);
   }
-  // const image =
-  //   '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="47.4" height="40.65" viewBox="21 18.5 158 135.5"><path d="M25,50 l150,0 0,100 -150,0 z" stroke-width="4" stroke="black" fill="rgb(128,224,255)" fill-opacity="1" ></path><path d="M25,50 L175,150 M25,150 L175,50" stroke-width="4" stroke="black" fill="black" ></path><g transform="translate(0,0)" stroke-width="4" stroke="black" fill="none" ><circle cx="100" cy="30" r="7.5" fill="black" ></circle><circle cx="70" cy="30" r="7.5" fill="black" ></circle><circle cx="130" cy="30" r="7.5" fill="black" ></circle></g></svg>';
-  const image =
-    '<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color:Orange" opacity="0.57">   <style>.title { fill: black; font-family: sans-serif; font-size: 27px; }</style>    <style>.title2 { fill: black; font-family: sans-serif; font-size: 14px; }</style>    <style>.mainText { fill: black; font-family: sans-serif; font-size: 14px; }</style><style>.smolText { fill: black; font-family: sans-serif; font-size: 10px; }</style><text x="31" y="50" class="title">Sell-Your-Soul Wallet</text><text x="15" y="75" class="title2">A tradable and rentable smart contract wallet</text><text x="15" y="120" class="mainText">ETH Balance: 0</text><text x="15" y="150" class="mainText">FOO Balance: </text><text x="15" y="180" class="mainText">BAR Balance: </text><text x="15" y="230" class="mainText">Wallet Address:</text><text x="15" y="245" class="smolText">0xf4d9599afd90b5038b18e3b551bc21a97ed21c37</text><defs><clipPath id="clip0_1_18"><rect width="300" height="300" fill="white"/></clipPath></defs></svg>';
+
   return (
     <CommonLayout className={styles.page}>
       <div className={styles.firstView}>
@@ -120,7 +98,7 @@ const LandingPage = () => {
             </Card>
           </div>
           {NFT_Wallets.map(({ tokenId, tokenUri }) => (
-            <>
+            <div key="{tokenId}">
               <div onClick={() => selectNFTWallet(tokenId)}>
                 <Card className={styles.card}>
                   <div className="list-container">
@@ -232,7 +210,7 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       style={{ marginRight: 15 }}
-                      onClick={() => transferNFTWallet(signer, transferAccount, currentWallet, toast)}
+                      onClick={() => transferNFTWallet(signer, transferAccount, currentWallet, setIsTransfer, setIsModalOpen, toast)}
                     >
                       Confirm
                     </Button>
@@ -246,7 +224,7 @@ const LandingPage = () => {
                   </ModalFooter>
                 </ModalContent>
               </Modal>
-            </>
+            </div>
           ))}
         </div>
       </div>

@@ -6,10 +6,11 @@ const testCalldata = async (
     signer: any,
     ) => {
         const NFTWalletContract = new Contract(
-            "0x6cba0f45da0fadcfc1146d4c7ef87e952830ff4b",
+            "0x5be58e99e845b72f465dd921543c7b3fe42e01f1",
             NFTWallet.abi,
             signer
         );
+
 
         const OwnershipNFTContract = new Contract(
             OwnershipNFT.contract,
@@ -17,29 +18,30 @@ const testCalldata = async (
             signer
         );
         // get data
-        const result1 = await OwnershipNFTContract.balanceOf("0xc4530619ca5114587671301505a0b8ed41c51580")
+        const result1 = await OwnershipNFTContract.balanceOf("0xc4530619ca5114587671301505a0b8ed41c51580");
         console.log(result1)
-        const result = await OwnershipNFTContract.tokenOfOwnerByIndex("0xc4530619ca5114587671301505a0b8ed41c51580", 1)
+        const result = await OwnershipNFTContract.tokenOfOwnerByIndex("0xc4530619ca5114587671301505a0b8ed41c51580", 0)
         console.log(result)
 
         // exec
-        // // // let ABI = ['function mint()'];
+        // // let ABI = ['function mint()'];
         // let ABI = ['function transferFrom(address from, address to, uint256 tokenId)'];
         // let iface = new ethers.utils.Interface(ABI);
-        // let calldata = iface.encodeFunctionData("transferFrom", ["0xd33c88aae8c1ade62a289f7607c18b93f3720e26", "0xc4530619ca5114587671301505a0b8ed41c51580", BigNumber.from("0x2b0b46b6e1dbe5b227042e9929846bef6014e523")]);
+        // let calldata = iface.encodeFunctionData("transferFrom", ["0x5c9CB0115DdE2CCD8819E0AC9a01CAFE30Be8Ba8", "0x30B84efa95cCCaAb86ad0206A97179ae85DE71ce", BigNumber.from("0x5be58e99e845b72f465dd921543c7b3fe42e01f1")]);
         // console.log(calldata)
-        // // let ABI = ['function transferFrom(address from, address to, uint256 tokenId)'];
-        // // let iface = new ethers.utils.Interface(ABI);
-        // // let calldata = iface.encodeFunctionData("transferFrom", ["0x5c9CB0115DdE2CCD8819E0AC9a01CAFE30Be8Ba8", "0xD00BA44b6d6e6f37DCdA75df508057b76b533842", BigNumber.from("0x5be58e99e845b72f465dd921543c7b3fe42e01f1")]); 
-        // // let calldata = iface.encodeFunctionData("balanceOf", ["0x5c9CB0115DdE2CCD8819E0AC9a01CAFE30Be8Ba8"]);
-        // ABI = ['function exec(tuple(address, bytes)[] actions)'];
-        // iface = new ethers.utils.Interface(ABI);
-        // calldata = iface.encodeFunctionData("exec", [[[OwnershipNFT.contract, calldata]]]);
-        // console.log(calldata);
-        // // const aaa = await NFTWalletContract.exec([["0xd33c88aae8c1ade62a289f7607c18b93f3720e26", calldata]])
-        // // console.log(aaa)
-        // // const bbb = await aaa.wait()
-        // // console.log(bbb)
+        // console.log()
+        // // // let ABI = ['function transferFrom(address from, address to, uint256 tokenId)'];
+        // // // let iface = new ethers.utils.Interface(ABI);
+        // // // let calldata = iface.encodeFunctionData("transferFrom", ["0x5c9CB0115DdE2CCD8819E0AC9a01CAFE30Be8Ba8", "0xD00BA44b6d6e6f37DCdA75df508057b76b533842", BigNumber.from("0x5be58e99e845b72f465dd921543c7b3fe42e01f1")]); 
+        // // // let calldata = iface.encodeFunctionData("balanceOf", ["0x5c9CB0115DdE2CCD8819E0AC9a01CAFE30Be8Ba8"]);
+        // // ABI = ['function exec(tuple(address, bytes)[] actions)'];
+        // // iface = new ethers.utils.Interface(ABI);
+        // // calldata = iface.encodeFunctionData("exec", [[[OwnershipNFT.contract, calldata]]]);
+        // // console.log(calldata);
+        // const aaa = await NFTWalletContract.exec([[OwnershipNFT.contract, calldata]])
+        // console.log(aaa)
+        // const bbb = await aaa.wait()
+        // console.log(bbb)
 
 
 
@@ -58,10 +60,10 @@ const testCalldata = async (
                 // 0x4757f4deab9a34e340b42282a85d5d455a8d37e3
             // 0xc4530619ca5114587671301505a0b8ed41c51580
                 // 0x9bcc2344216512091ad26b2cda13ab4d103cf36e
-                // 0x2b0b46b6e1dbe5b227042e9929846bef6014e523 (going)
+                // 0x2b0b46b6e1dbe5b227042e9929846bef6014e523(gone to test account)
         // 0xdc4ff38744e85c6f6b52032a2cfb32991b46eb6c
         // 0xa1812d0f75db8730598092f26795e10a434169f5
-        // 0x5be58e99e845b72f465dd921543c7b3fe42e01f1
+        // 0x5be58e99e845b72f465dd921543c7b3fe42e01f1(TO Jason Done)
 
         // let ABI = ['function transferFrom(address from, address to, uint256 tokenId)']
         // let iface = new ethers.utils.Interface(ABI);
