@@ -19,6 +19,7 @@ import OwnershipNFT from "contracts/OwnershipNFT.json";
 import { useNavigate } from "react-router-dom";
 import swapToken from "helpers/swap";
 import transferNFTWallet from "helpers/transferNFTWallet";
+import testCalldata from "helpers/testCalldata";
 
 const NFT_Wallet = [
   {
@@ -68,22 +69,14 @@ const LandingPage = () => {
       try {
         let temp_Wallets: NFT_Wallet[] = [];
         var numNFT = await OwnershipNFTContract.balanceOf(address);
-        console.log("raw");
-        console.log(numNFT);
+        console.log("Current address has " + numNFT + " NFT Wallets");
         var a = numNFT._hex;
-        console.log(a);
         for (var _i = 0; _i < numNFT; _i++) {
           var rawTokenID = await OwnershipNFTContract.tokenOfOwnerByIndex(
             address,
             _i
           );
           var tokenID = rawTokenID._hex;
-          console.log("tokenID");
-          console.log(tokenID);
-          var deT = parseInt(tokenID, 16);
-          console.log(deT);
-          var test = BigInt(deT);
-          console.log(test);
           var tokenURI = await OwnershipNFTContract.tokenURI(tokenID);
           const temp_Wallet: NFT_Wallet = {
             tokenId: tokenID,
@@ -91,6 +84,7 @@ const LandingPage = () => {
           };
           temp_Wallets.push(temp_Wallet);
         }
+        console.log("Owned Wallet: ");
         console.log(temp_Wallets);
         setNFT_Wallets(temp_Wallets);
       } catch (error: any) {
@@ -158,7 +152,7 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       variant="secondary"
-                      onClick={() => setIsModalOpen(false)}
+                      onClick={() => testCalldata(signer)}
                       style={{ margin: 15 }}
                     >
                       Uniswap - Add Liquidity
@@ -238,7 +232,7 @@ const LandingPage = () => {
                     <Button
                       size="medium"
                       style={{ marginRight: 15 }}
-                      onClick={() => transferNFTWallet(transferAccount, signer, currentWallet, OwnershipNFTContract, toast)}
+                      onClick={() => transferNFTWallet(signer, transferAccount, currentWallet, toast)}
                     >
                       Confirm
                     </Button>

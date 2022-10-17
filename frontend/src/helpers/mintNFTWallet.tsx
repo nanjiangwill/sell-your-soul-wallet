@@ -10,7 +10,7 @@ const mintNFTWallet = async (signer: any, toast: any) => {
         OwnershipNFT.abi,
         signer
       );
-
+        // TODO: Mint for NFT Wallet
       const OwnershipNFTContractResponce = await OwnershipNFTContract.mint();
       const hash = OwnershipNFTContractResponce.hash;
       const hashUrl = `<a href=https://goerli.arbiscan.io/tx/${hash}>Check Arbitrum Testnet Info (Click with CMD)</a>`;
