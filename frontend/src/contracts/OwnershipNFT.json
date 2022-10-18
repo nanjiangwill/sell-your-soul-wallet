@@ -2,7 +2,7 @@
     "_format": "hh-sol-artifact-1",
     "contractName": "OwnershipNFT",
     "sourceName": "contracts/OwnershipNFT.sol",
-    "contract": "0x9C9993C65F393332924FAf5c7Aa3D936DAa98444",
+    "contract": "0x115ca26551A4f2B9243BBf9bF117157B39140040",
     "abi": [
         {
             "inputs": [
