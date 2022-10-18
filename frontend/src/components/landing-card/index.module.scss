@@ -1,0 +1,121 @@
+.textarea {
+    padding: 15px;
+    margin-bottom: 20px;
+
+    appearance: none;
+    border: none;
+    resize: none;
+
+    width: 100%;
+    height: 150px;
+
+    font-size: 18px;
+
+    border-radius: 15px;
+    background-color: #f7f8f9;
+
+    padding: 20px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.smallcard {
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    // display: flex;
+    display: inline-flex;
+
+    cursor: pointer;
+    transition: transform 200ms;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(1.02);
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .heading {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+}
+
+.cards {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
+    // padding: 15px;
+
+
+
+    .card {
+        margin: 20px;
+        width: 300px;
+        height: 300px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+
+        cursor: pointer;
+        transition: transform 200ms;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(1.02);
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        .heading {
+            font-size: 28px;
+        }
+
+        .description {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    }
+}
+
+.button5 {
+    color: grey;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 200ms;
+
+    &:hover {
+        transform: scale(1.05);
+
+        &:active {
+            transform: scale(1.02);
+        }
+    }
+}

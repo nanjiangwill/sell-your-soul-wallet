@@ -1,0 +1,10 @@
+{
+    "_format": "hh-sol-artifact-1",
+    "contractName": "Apple",
+    "sourceName": "contracts/Apple.sol",
+    "contract": "0x08f173B0694636B10D0c9FD17EF32a8D4B0D2a97",
+    "abi": [],
+    "bytecode": "",
+    "linkReferences": {},
+    "deployedLinkReferences": {}
+  }

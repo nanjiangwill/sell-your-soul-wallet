@@ -8,8 +8,8 @@ import "../lib/openzeppelin-contracts/contracts/utils/Strings.sol";
 import "../lib/openzeppelin-contracts/contracts/utils/Base64.sol";
 
 
-address constant TokenFOO = 0x16367BB04F0Bb6D4fc89d2aa31c32E0ddA609508;
-address constant TokenBAR = 0x26AA6EF8FCf205E7aC9466DBa73bcC8a8FA9B958;
+address constant TokenFOO = 0x08f173B0694636B10D0c9FD17EF32a8D4B0D2a97;
+address constant TokenBAR = 0xEF3330FB26DA923c203BD929ca197Af75dC41577;
 
 contract OwnershipNFT is ERC721Enumerable {
 
